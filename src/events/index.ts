@@ -13,15 +13,11 @@ export function registerEvents(): void {
   client.on("interactionCreate", handleInteractionCreate)
 
   client.on("error", (error) => {
-    console.error("Discord client error:", error.message)
+    console.error("Client error:", error.message)
   })
 
   client.on("warn", (warning) => {
-    console.warn("Discord client warning:", warning)
-  })
-
-  client.on("shardError", (error) => {
-    console.error("Websocket error:", error.message)
+    console.warn("Client warning:", warning)
   })
 
   process.on("unhandledRejection", (error) => {

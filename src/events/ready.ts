@@ -26,14 +26,18 @@ export async function handleReady(client: Client<true>): Promise<void> {
   console.log(`Locked to guild: ${guild.name}`)
 
   const unauthorizedGuilds = client.guilds.cache.filter((g) => !isAllowedGuild(g.id))
-  for (const [guildId, guild] of unauthorizedGuilds) {
-    console.log(`Leaving unauthorized guild: ${guild.name} (${guildId})`)
-    await guild.leave().catch(() => {})
+  for (const [guildId, g] of unauthorizedGuilds) {
+    console.log(`Leaving unauthorized guild: ${g.name} (${guildId})`)
+    await g.leave().catch(() => {})
   }
 
-  const restoredSessions = await restoreVoiceSessions(config.GUILD_ID)
-  if (restoredSessions > 0) {
-    console.log(`Restored ${restoredSessions} voice sessions`)
+  try {
+    const restoredSessions = await restoreVoiceSessions(config.GUILD_ID)
+    if (restoredSessions > 0) {
+      console.log(`Restored ${restoredSessions} voice sessions`)
+    }
+  } catch (error) {
+    console.log("No voice sessions to restore")
   }
 
   scheduleBackup()
