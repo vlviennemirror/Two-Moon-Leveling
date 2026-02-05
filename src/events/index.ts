@@ -6,6 +6,7 @@ import { handleVoiceStateUpdate } from "./voice-state.js"
 import { handleInteractionCreate } from "./interaction-create.js"
 
 export function registerEvents(): void {
+    import { Events } from "discord.js"
   client.once("ready", handleReady)
   client.on("messageCreate", handleMessageCreate)
   client.on("messageReactionAdd", handleReactionAdd)

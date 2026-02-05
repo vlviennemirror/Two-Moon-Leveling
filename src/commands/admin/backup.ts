@@ -3,6 +3,7 @@ import { createBackup, getBackupJson, restoreFromBackup, getBackupHistory } from
 import { cache } from "../../cache/manager.js"
 import { createSuccessEmbed, createErrorEmbed, createInfoEmbed } from "../../utils/embeds.js"
 import type { Command } from "../index.js"
+import { MessageFlags } from "discord.js"
 
 export const backupCommand: Command = {
   data: new SlashCommandBuilder()
@@ -57,7 +58,7 @@ export const backupCommand: Command = {
       if (!attachment.name?.endsWith(".json")) {
         await interaction.reply({
           embeds: [createErrorEmbed("Invalid File", "Please upload a JSON backup file")],
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         })
         return
       }
