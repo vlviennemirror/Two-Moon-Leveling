@@ -1,4 +1,5 @@
 import { client } from "../client.js"
+import { Events } from "discord.js"
 import { handleReady } from "./ready.js"
 import { handleMessageCreate } from "./message-create.js"
 import { handleReactionAdd } from "./reaction-add.js"
@@ -6,7 +7,6 @@ import { handleVoiceStateUpdate } from "./voice-state.js"
 import { handleInteractionCreate } from "./interaction-create.js"
 
 export function registerEvents(): void {
-    import { Events } from "discord.js"
   client.once("ready", handleReady)
   client.on("messageCreate", handleMessageCreate)
   client.on("messageReactionAdd", handleReactionAdd)
