@@ -1,0 +1,27 @@
+{
+  "name": "discord-leveling-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "deploy": "tsx src/deploy-commands.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "drizzle-orm": "^0.29.3",
+    "pg": "^8.11.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/pg": "^8.10.9",
+    "drizzle-kit": "^0.20.13",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
