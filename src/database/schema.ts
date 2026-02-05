@@ -8,6 +8,7 @@ import {
   timestamp,
   primaryKey,
   index,
+  serial,
 } from "drizzle-orm/pg-core"
 
 export const guildConfig = pgTable("guild_config", {
@@ -128,7 +129,7 @@ export const voiceSessions = pgTable(
 )
 
 export const backupHistory = pgTable("backup_history", {
-  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  id: serial("id").primaryKey(),
   guildId: varchar("guild_id", { length: 20 }).notNull(),
   filename: varchar("filename", { length: 255 }).notNull(),
   recordCount: integer("record_count").notNull(),
